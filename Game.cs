@@ -19,6 +19,8 @@ namespace HelloWorld
 
             // This value is used to heal the player.
             float healthRegen = 20;
+            Console.WriteLine("You look a little hurt take this");
+            Console.WriteLine("You gained " + healthRegen + "Hp!!");
 
             // This value is used to store the pet's health.
             float petHealth = 50;
