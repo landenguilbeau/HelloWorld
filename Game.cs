@@ -14,6 +14,16 @@ namespace HelloWorld
             Console.WriteLine(name + " please select a pet name of choice");
             string pet = Console.ReadLine();
 
+            Console.WriteLine("Please choose a role");
+            Console.WriteLine("Choose Between Mage, Knight, Assassain, or Hunter");
+            string role = Console.ReadLine();
+
+            Console.WriteLine("So you are a " + role + "?");
+            if (role == "Mage") ;
+            if (role == "Knight") ;
+            if (role == "Assassain") ;
+            if (role == "Hunter") ;
+
             // This variable is used to store health.
             float health = 100;
 
