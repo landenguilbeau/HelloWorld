@@ -155,39 +155,44 @@ namespace HelloWorld
                 Console.WriteLine("You have injured the troll!");
                 Console.WriteLine("You [  " + health + "  ]");
                 Console.WriteLine("Troll [  20  ] -15");
+
+                Console.WriteLine("How should you attack?");
+                Console.WriteLine("[1] Punch");
+                Console.WriteLine("[2] Kick");
+                string answer5 = Console.ReadLine();
+                string answer6 = Console.ReadLine();
+                if (answer5 == "1")
+                {
+                    Console.WriteLine("You have injured the troll!");
+                    Console.WriteLine("You [  " + health + "  ]");
+                    Console.WriteLine("You [  5  ] -15");
+                    Console.WriteLine("Congradulations, you have defeated the Troll!");
+                    Console.WriteLine("The Trolls's Toe was not found, please restart");
+                }
+                if (answer5 == "2")
+                {
+                    Console.WriteLine("The kick landed, he dropped an item");
+                    Console.WriteLine("You [  " + health + "  ]");
+                    Console.WriteLine("Troll [  5  ] -25");
+                    Console.WriteLine("You have acquired Troll's Toe");
+
+                    Console.WriteLine("[1] to continue");
+                    if(answer6 == "1")
+                    {
+                        Console.WriteLine(" ");
+
+                    }
+
+                }
+                
             }
-            if(answer4 == "2")
+            string answer7 = Console.ReadLine();
+            if(answer7 == "2")
             {
                 Console.WriteLine("You missed the troll! He headbutt you!");
                 Console.WriteLine("You [  " + health + "  ]" + "-15");
                 Console.WriteLine("Troll [  20  ]");
             }
-
-            Console.WriteLine("How should you attack?");
-            Console.WriteLine("[1] Punch");
-            Console.WriteLine("[2] Kick");
-            string answer5 = Console.ReadLine();
-            if (answer5 == "1")
-            {
-                Console.WriteLine("You have injured the troll!");
-                Console.WriteLine("You [  " + health + "  ]");
-                Console.WriteLine("You [  5  ] -15");
-                Console.WriteLine("Congradulations, you have defeated the Troll!");
-                Console.WriteLine("The Trolls's Toe was not found, please restart");
-            }
-            if (answer5 == "2")
-            {
-                Console.WriteLine("The kick landed, he dropped an item");
-                Console.WriteLine("You [  " + health + "  ]");
-                Console.WriteLine("Troll [  5  ] -25");
-            }
-            float trollsToe = 1;
-            Console.WriteLine("Acquired trollsToe");
-
-            
-
-
-
 
             // Create an application that gets the users name
             // along with additional input. Print the user's name and input
