@@ -36,6 +36,7 @@ namespace HelloWorld
             Console.WriteLine("Player Health:" + health);
             Console.WriteLine("Player Level:" + level);
             Console.WriteLine("Pet's Name:" + pet);
+            Console.WriteLine("Pet's level:" + petLevel);
             Console.WriteLine("Press any key to continue");
 
 
