@@ -6,197 +6,238 @@ namespace HelloWorld
 {
     class Game
     {
+        float heal(float playerHealth)
+        {
+            float result = (playerHealth + 20);
+            return result;
+        }
+        void PrintStats(float health, int defense, string name)
+        {
+            Console.WriteLine(name + " health: " + health);
+            Console.WriteLine(name + " defense: " + defense);
+            Console.ReadKey();
+        }
+        
         public void Run()
         {
-            Console.WriteLine("Welcome hero what is your name?!");
-            string name = Console.ReadLine();
 
-            Console.WriteLine(name + " please select a pet name of choice");
+            Console.WriteLine("Welcome hero what is your name?!");
+            string playerName = Console.ReadLine();
+
+            Console.WriteLine(playerName + " please select a pet name of choice");
             string pet = Console.ReadLine();
 
             // This variable is used to store base stats.
-            float health = 100;
-            float speed = 25;
-            float defense = 50;
+            float playerHealth = 100;
+            int playerDefense = 50;
+            int playerDamage = 0;
 
-            // This value shows the players' and their pets' levels, and the maximum level capacity.
-            int maxLevel = 100;
-            int level = 1;
-            int petLevel = 1;
 
-            // This value is used to store the pet's health.
-            float petHealth = 50;
+            // This value is used to store the pet's health and damage.
+            int petHealth = 0;
+            int petDamage = 0;
+            int petDefense = 0;
 
             // The string allows players to select a role 
             Console.WriteLine("Please select a role");
-            Console.WriteLine("Select one: Mage, Knight, Assassain, or Hunter");
-            string role = Console.ReadLine();
-
-            Console.WriteLine("So you are a " + role + "?");
-            if (role == "Mage")
+            Console.WriteLine("Select one: [1]Mage, [2]Knight, [3]Assassain, or [4]Hunter");
+            char input = (' ');
+            Console.WriteLine();
+            while (input != '1' && input != '2' && input != '3' && input != '4')
             {
-                health = 100;
-                speed = 75;
-                defense = 25;
-                petHealth = 50;
-            }
-            if (role == "Knight")
-            {
-                health = 100;
-                speed = 50;
-                defense = 50;
-                petHealth = 50;
-            }
-            if (role == "Assassin")
-            {
-                health = 90;
-                speed = 85;
-                defense = 25;
-                petHealth = 50;
-            }
-            if (role == "Hunter")
-            {
-                health = 100;
-                speed = 45;
-                defense = 45;
-                petHealth = 75;
+                input = Console.ReadKey().KeyChar;
+
+                if (input == '1')
+                {
+                    playerHealth = 100;
+                    playerDefense = 25;
+                    playerDamage = playerDamage + 15;
+                }
+                if (input == '2')
+                {
+                    playerHealth = 100;
+                    playerDefense = 75;
+                    playerDamage = playerDamage + 25;
+                }
+                if (input == '3')
+                {
+                    playerHealth = 90;
+                    playerDefense = 25;
+                    playerDamage = playerDamage + 10;
+                }
+                if (input == '4')
+                {
+                    playerHealth = 100;
+                    playerDefense = 45;
+                    playerDamage = playerDamage + 20;
+                }
 
             }
 
-            // This value is used to heal the player.
-            float healthRegen = 20;
-            Console.WriteLine("You look a little hurt take this");
-            Console.WriteLine("You gained " + healthRegen + "Hp!!");
+            Console.WriteLine(")");
+            Console.WriteLine("Choose pet type");
+            Console.WriteLine("[1] Dragon, [2] Horse, [3] Crow, [4] Wolf");
+            char petType = (' ');
+            Console.WriteLine();
+            while (petType != '1' && petType != '2' && petType != '3' && petType != '4')
+            {
+                petType = Console.ReadKey().KeyChar;
 
-            Console.WriteLine("Congrats " + name + "! Good Luck!");
-            bool ready = true;
+                if (petType == '1')
+                {
+                    petHealth = petHealth + 25;
+                    petDamage = petDamage + 10;
+                    petDefense = petDefense + 0;
+                }
+                if (petType == '2')
+                {
+                    petHealth = petHealth + 20;
+                    petDamage = petDamage + 7;
+                    petDefense = petDefense + 10;
+                }
+                if (petType == '3')
+                {
+                    petHealth = petHealth + 10;
+                    petDamage = petDamage + 15;
+                    petDefense = petDefense + 5;
+                }
+                if (petType == '4')
+                {
+                    petHealth = petHealth + 15;
+                    petDamage = petDamage + 15;
+                    petDefense = petDefense + 15;
+                }
+
+            }
 
             // The code below allows the player to see it's stats, name, and pet's name.
-            Console.WriteLine("PLayer Name:" + name);
-            Console.WriteLine("Player Health:" + health);
-            Console.WriteLine("Player Speed:" + speed);
-            Console.WriteLine("Player Defense:" + defense);
-            Console.WriteLine("Player Level:" + level);
+            Console.WriteLine(") ");
+            Console.WriteLine("[PLAYER STATS]");
+            Console.WriteLine("PLayer Name: " + playerName);
+            Console.WriteLine("Player Health: " + playerHealth);
+            Console.WriteLine("Player Damage: " + playerDamage);
+            Console.WriteLine("Player Defense: " + playerDefense);
 
-            Console.WriteLine("Pet's Name:" + pet);
-            Console.WriteLine("Pet's Health:" + petHealth);
-            Console.WriteLine("Pet's level:" + petLevel);
+            Console.WriteLine(" ");
 
-            Console.WriteLine("Remain safe and make the right decisions to survive and level up!");
-            Console.WriteLine("Press [1] to start");
-            string startGame = Console.ReadLine();
+            Console.WriteLine("[PET STATS]");
+            Console.WriteLine("Pet's Name: " + pet);
+            Console.WriteLine("Pet's Health: " + petHealth);
+            Console.WriteLine("Pet's Damage: " + petDamage);
+            Console.WriteLine("Pet's Defense: " + petDefense);
+           
+            Console.WriteLine(" ");
+            Console.WriteLine("[Enter] to continue");
 
-            if(startGame == "1")
+            string continueGame = Console.ReadLine();
+            if (continueGame == "1") 
             {
                 Console.WriteLine(" ");
             }
 
             Console.Clear();
 
-
-            // The users adventure begins with lure
+            // The users adventure begins 
             Console.WriteLine(" ");
             Console.WriteLine("You're told to go to Himpleton Village");
             Console.WriteLine(" ");
             Console.WriteLine("You have arrived in Himpleton Village and meet someone named Bidwarf");
+            Console.WriteLine(" ");
             Console.WriteLine("Bidwarf: Who are you?");
-            Console.WriteLine("You:" + name);
+            Console.WriteLine(" ");
+            Console.WriteLine("You:" + playerName);
+            Console.WriteLine(" ");
             Console.WriteLine("Bidwarf: Where are you from?");
+            Console.WriteLine(" ");
 
             string home = Console.ReadLine();
+            Console.Clear();
             Console.WriteLine("You:" + home);
-
+            Console.WriteLine(" ");
             Console.WriteLine("Bidwarf: Sounds interesting, would you mind helping out a bit? ");
             Console.WriteLine("[1] Yes or [2] No");
-            string answer1 = Console.ReadLine();
+            Console.WriteLine(" ");
 
-            if(answer1 == "1" )
+            char answerBidwarf = (' ');
+            while (answerBidwarf != '1' && answerBidwarf != '2')
             {
-                Console.WriteLine("You: No, I wouldn't mind.");
-                Console.WriteLine("Bidwarf: Okay can you defeat that troll that lurks around the village at night? It bothers me, and I'll throw in a reward!");
-                Console.WriteLine("[1] Yes or [2] No");
-                string answer2 = Console.ReadLine();
-                if (answer2 == "1")
+                answerBidwarf = Console.ReadKey().KeyChar;
+
+                if (answerBidwarf == '1')
                 {
-                    Console.WriteLine("Bidwarf: Okay bring me back a troll toe and I'll reward you!");
-
+                    Console.WriteLine(playerName + ": No, I wouldn't mind.");
+                    Console.WriteLine(" ");
+                    Console.WriteLine("Bidwarf: Okay defeat that troll that lurks around the village at night,and bring me back a Troll's Toe. I'll throw in a reward!");
+                    Console.WriteLine(" ");
+                    Console.WriteLine(playerName + ": Okay, no problem.");
                 }
+                else if (answerBidwarf == '2')
+                {
 
-
+                    Console.WriteLine("Bidwarf: Too bad, I need your help.");
+                    Console.WriteLine("Bidwarf: Okay defeat that troll that lurks around the village at night,and bring me back a Troll's Toe. I'll throw in a reward!");
+                    Console.WriteLine(playerName + ": Okay, no problem.");
+                }
             }
 
-            if (answer1 == "2" )
-            {
-                Console.WriteLine("You: Yes i would, thanks not interested.");
-                Console.WriteLine("Bidwarf: Pfft! Whatever.");
-            }
 
             Console.WriteLine("The night approaches...");
-            Console.WriteLine("[1] to continue");
+            Console.WriteLine("[Enter] to continue");
 
-            string answer3 = Console.ReadLine();
+            //This string is used to advance the game and clear the console to make things look nicer
+            string advance = Console.ReadLine();
 
-            if(answer3 == "1")
+            if (advance == " ")
             {
                 Console.WriteLine(" ");
             }
 
             Console.Clear();
 
-            
-            Console.WriteLine("You've encountered the troll!!!");
-            Console.WriteLine("How should you attack?");
-            Console.WriteLine("");
-            Console.WriteLine("[1] Punch");
-            Console.WriteLine("[2] Kick");
-            string answer4 = Console.ReadLine();
-            if(answer4 == "1")
+            // Player's first encounter with an enemy
+            Console.WriteLine("You have encountered the Troll");
+
+            int trollHealth = 50;
+            int trollDamage = 5;
+
+            while (trollHealth > 0 && playerHealth > 0)
             {
-                Console.WriteLine("You have injured the troll!");
-                Console.WriteLine("You [  " + health + "  ]");
-                Console.WriteLine("Troll [  20  ] -15");
-
-                Console.WriteLine("How should you attack?");
-                Console.WriteLine("[1] Punch");
-                Console.WriteLine("[2] Kick");
-                string answer5 = Console.ReadLine();
-                string answer6 = Console.ReadLine();
-                if (answer5 == "1")
+                Console.WriteLine("What will you do?");
+                Console.WriteLine("[1] Attack");
+                Console.WriteLine("[2] Pet Attack");
+                PrintStats(playerHealth, playerDefense, playerName);
+                PrintStats(petHealth, petDefense, pet);
+                PrintStats(trollHealth, trollDamage, "Troll");
+                Console.WriteLine("\n[1] Attack");
+                Console.WriteLine("[2] Pet Attack");
+                input = Console.ReadKey().KeyChar;
+                if (input == '1')
                 {
-                    Console.WriteLine("You have injured the troll!");
-                    Console.WriteLine("You [  " + health + "  ]");
-                    Console.WriteLine("You [  5  ] -15");
-                    Console.WriteLine("Congradulations, you have defeated the Troll!");
-                    Console.WriteLine("The Trolls's Toe was not found, please restart");
+                    trollHealth -= playerDamage;
+                    playerHealth -= trollDamage;
+                    Console.WriteLine("You have done " + playerDamage + " to the Troll!");
+                    Console.WriteLine("The Troll has done " + trollDamage + " to you.");
                 }
-                if (answer5 == "2")
+                else if (input == '2')
                 {
-                    Console.WriteLine("The kick landed, he dropped an item");
-                    Console.WriteLine("You [  " + health + "  ]");
-                    Console.WriteLine("Troll [  5  ] -25");
-                    Console.WriteLine("You have acquired Troll's Toe");
-
-                    Console.WriteLine("[1] to continue");
-                    if(answer6 == "1")
-                    {
-                        Console.WriteLine(" ");
-
-                    }
-
+                    trollHealth -= petDamage;
+                    petHealth -= trollDamage;
+                    Console.WriteLine("You have done " + petDamage + "to the Troll!");
+                    Console.WriteLine("The Troll has done " + trollDamage + " to " + pet);
                 }
-                
+                Console.Clear();
             }
-            string answer7 = Console.ReadLine();
-            if(answer7 == "2")
-            {
-                Console.WriteLine("You missed the troll! He headbutt you!");
-                Console.WriteLine("You [  " + health + "  ]" + "-15");
-                Console.WriteLine("Troll [  20  ]");
-            }
+
+
+
+
 
             // Create an application that gets the users name
             // along with additional input. Print the user's name and input
             // to the console along with their stats. Must use all data types.
+
+
+
 
         }
     }
