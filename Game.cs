@@ -15,7 +15,6 @@ namespace HelloWorld
         {
             Console.WriteLine(name + " health: " + health);
             Console.WriteLine(name + " defense: " + defense);
-            Console.ReadKey();
         }
         
         public void Run()
@@ -31,6 +30,20 @@ namespace HelloWorld
             float playerHealth = 100;
             int playerDefense = 50;
             int playerDamage = 0;
+
+            // This loop is to remind player of their health
+            if (playerHealth >= 100)
+            {
+                Console.WriteLine("Health is full");
+            }
+            if (playerHealth <= 40)
+            {
+                Console.WriteLine("Danger! You're health is low!");
+            }
+            if (playerHealth <= 0)
+            {
+                Console.WriteLine("You have died!");
+            }
 
 
             // This value is used to store the pet's health and damage.
@@ -61,7 +74,7 @@ namespace HelloWorld
                 }
                 if (input == '3')
                 {
-                    playerHealth = 90;
+                    playerHealth = 100;
                     playerDefense = 25;
                     playerDamage = playerDamage + 10;
                 }
@@ -199,34 +212,47 @@ namespace HelloWorld
 
             int trollHealth = 50;
             int trollDamage = 5;
+            string trollName = ("Basic Troll");
 
             while (trollHealth > 0 && playerHealth > 0)
             {
                 Console.WriteLine("What will you do?");
                 Console.WriteLine("[1] Attack");
                 Console.WriteLine("[2] Pet Attack");
+
                 PrintStats(playerHealth, playerDefense, playerName);
                 PrintStats(petHealth, petDefense, pet);
-                PrintStats(trollHealth, trollDamage, "Troll");
-                Console.WriteLine("\n[1] Attack");
-                Console.WriteLine("[2] Pet Attack");
+                PrintStats(trollHealth, trollDamage, trollName);
+
                 input = Console.ReadKey().KeyChar;
+
                 if (input == '1')
                 {
                     trollHealth -= playerDamage;
                     playerHealth -= trollDamage;
                     Console.WriteLine("You have done " + playerDamage + " to the Troll!");
-                    Console.WriteLine("The Troll has done " + trollDamage + " to you.");
+                    Console.WriteLine(trollName + " has done " + trollDamage + " to you.");
                 }
                 else if (input == '2')
                 {
                     trollHealth -= petDamage;
                     petHealth -= trollDamage;
-                    Console.WriteLine("You have done " + petDamage + "to the Troll!");
-                    Console.WriteLine("The Troll has done " + trollDamage + " to " + pet);
+                    Console.WriteLine("You have done " + petDamage + "to the " + trollName);
+                    Console.WriteLine(trollName + " has done " + trollDamage + " to " + pet);
                 }
                 Console.Clear();
             }
+
+            Console.WriteLine("Congratulations! You have defeated " + trollName);
+            Console.WriteLine("[Enter] to continue.");
+            Console.WriteLine("Now return the Troll's Toe to Bidwarf.");
+
+            Console.ReadLine();
+            Console.Clear();
+
+            playerHealth = 100;
+
+
 
 
 
