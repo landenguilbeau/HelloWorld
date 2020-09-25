@@ -9,13 +9,19 @@ namespace HelloWorld
         private string _name;
         private int _health;
         private int _damage;
+        private int _baseDamage;
         private Item[] _inventory;
-
+        private Item _currentWeapon;
+        private Item _hands;
+        private bool _gameOver;
+        private int _sword;
+        private int _potion;
         public Player()
         {
             _inventory = new Item[3];
             _health = 100;
-            _damage = 10;
+            _baseDamage = 10;
+            _hands.name = "These Hands!";
 
         }
         public Player(string playerName, int healthVal, int damageVal, int inventorySize)
@@ -24,6 +30,8 @@ namespace HelloWorld
             _health = healthVal;
             _damage = damageVal;
             _inventory = new Item[inventorySize];
+            _hands.name = "These Hands!";
+            _hands.statBoost = 0;
         }
         public void AddItemToInventory(Item item, int index)
         {
@@ -35,11 +43,11 @@ namespace HelloWorld
             GetInput(out input, "Sword", "Potion", "Please select item for battle");
             if (input == '1')
             {
-                player.EquipItem(int sword);
+                player.EquipItem(_sword);
             }
             else if (input == '2')
             {
-                player.EquipItem(int potion);
+                player.EquipItem(_potion);
             }
         }
         public void GetInput(out char input, string option1, string option2, string query)
@@ -91,6 +99,7 @@ namespace HelloWorld
             }
             Console.WriteLine(_name + " has taken " + damageVal + " damage.");
         }
+        
     }
     
 }
